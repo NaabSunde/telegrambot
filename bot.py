@@ -1,6 +1,7 @@
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 import os
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from chuck import ChuckNorris
 
 
 #setup
@@ -25,10 +26,14 @@ def start(bot, update):
     update.message.reply_text(
         "Hello {}, my name is Watari! I have yet found a purpose for my existence, but I hope I'll soon find it!".format(update.message.from_user.first_name))
 
+def chuck(bot, update):
+    update.message.reply_text(
+            ChuckNorris().random().joke.replace("Chuck Norris", update.message.from_user.first_name))
 
 
 #handlers
 updater.dispatcher.add_handler(CommandHandler("start", start))
+updater.dispatcher.add_handler(CommandHandler("chuck", chuck))
 
 #keep bot runnin'!
 updater.start_polling()
