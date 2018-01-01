@@ -26,7 +26,7 @@ print(Bot.get_me(Bot(usertoken)))
 #bot
 
 def start(bot, update):
-    update.message.reply_text("Hello {}, my name is Watari! I have yet found a purpose for my existence, but I hope I'll soon find it!".format(update.message.from_user.first_name))
+    update.message.reply_text("Hello {}, my name is {}! I have yet found a purpose for my existence, but I hope I'll soon find it!".format(update.message.from_user.first_name), Bot.get_me(Bot(usertoken)).first_name)
 
 def chuck(bot, update):
     update.message.reply_text(
